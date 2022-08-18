@@ -29,7 +29,7 @@ button {
     border: none;
     background-color: #18191A;
     color: white;
-    font-size:larger;
+    font-size: 28px;
 
     height: 75px;
     width: 75px;
@@ -49,4 +49,19 @@ button {
 
 .btns .zerobtn {
     width: 158px;
+}
+
+.operator {
+    background-color: dimgray;
+}
+
+p {
+    color: white;
+    font-size: 36px;
+    text-align: right;
+}
+.screen {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
 }
