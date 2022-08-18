@@ -1,3 +1,5 @@
+const display = document.querySelector('.display');
+
 function add(a, b) {
     return a + b;
 }
@@ -20,3 +22,7 @@ function operate(a, b, op) {
     if (op == '*') return multiply(a, b);
     if (op == '/') return divide(a, b);
 }
+
+let dNum = 0;
+
+display.textContent = dNum;
