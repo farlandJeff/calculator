@@ -47,7 +47,7 @@ button {
     justify-content: space-between;
 }
 
-.btns .zerobtn {
+.btns .btn0 {
     width: 158px;
 }
 
@@ -60,6 +60,7 @@ p {
     font-size: 36px;
     text-align: right;
 }
+
 .screen {
     display: flex;
     justify-content: end;
