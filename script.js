@@ -1,4 +1,3 @@
-const display = document.querySelector('.display');
 let dNum = '0';
 let num1 = null;
 let num2 = null;
@@ -7,9 +6,8 @@ let operator2 = null;
 let result = null
 const numBtns = document.querySelectorAll('button');
 
-
-
 function displayNumber() {
+    const display = document.querySelector('.display');
     display.textContent = dNum;
 }
 
@@ -18,9 +16,18 @@ displayNumber();
 
 numBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-        
+        if (btn.classList.contains('num')) {
+            console.log(btn.value);
+        }
     });
 });
+
+
+
+
+
+
+
 
 function add(a, b) {
     return a + b;
