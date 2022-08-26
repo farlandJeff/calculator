@@ -8,7 +8,7 @@ const numBtns = document.querySelectorAll('button');
 
 function displayNumber() {
     const display = document.querySelector('.display');
-    display.textContent = dNum;
+    display.textContent = '' + dNum;
 }
 
 displayNumber();
@@ -26,11 +26,17 @@ numBtns.forEach(btn => {
         if (btn.classList.contains('equals')) {
             equalInput();
             displayNumber();
+            //dNum = '0';
         }
     });
 });
 
 function numInput(num) {
+    if (num1 != null && num2 != null) {
+        num1 = null;
+        num2 = null;
+        dNum = '0'
+    }
     if (dNum == '0') {
         dNum = num;
     } else {
@@ -57,11 +63,9 @@ function opInput(op) {
 }
 
 function equalInput() {
-    num2 = +dNum;
+    if (num2 == null) num2 = parseInt(dNum);
     num1 = operate(num1, num2, operator1);
-    dNum = num1;
-    num1 = null;
-    num2 = null;
+    dNum = '' + num1;
 }
 
 
