@@ -17,15 +17,52 @@ displayNumber();
 numBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         if (btn.classList.contains('num')) {
-            console.log(btn.value);
+            numInput(btn.value);
+            displayNumber();
+        }
+        if (btn.classList.contains('operator')) {
+            opInput(btn.textContent);
+        }
+        if (btn.classList.contains('equals')) {
+            equalInput();
+            displayNumber();
         }
     });
 });
 
+function numInput(num) {
+    if (dNum == '0') {
+        dNum = num;
+    } else {
+        dNum = dNum + num;
+    }
+}
 
+function opInput(op) {
+    if (operator1 == null) {
+        operator1 = op;
+        num1 = +dNum;
+        dNum = '0';
+    } else if (operator1 != null) {
+        operator2 = op;
+        num2 = +dNum;
+        num1 = operate(num1, num2, operator1);
+        operator1 = operator2;
+        operator2 = null;
+        num2 = null;
+        dNum = num1;
+        displayNumber();
+        dNum = '0';
+    }
+}
 
-
-
+function equalInput() {
+    num2 = +dNum;
+    num1 = operate(num1, num2, operator1);
+    dNum = num1;
+    num1 = null;
+    num2 = null;
+}
 
 
 
