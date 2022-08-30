@@ -51,8 +51,12 @@ button {
     width: 158px;
 }
 
-.operator {
-    background-color: dimgray;
+.colorbtn {
+    background-color: #09363c;
+}
+
+.colorclick {
+    background-color: #0f535c;
 }
 
 p {

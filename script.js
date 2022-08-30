@@ -82,7 +82,6 @@ function equalInput() {
     if (num2 == null) num2 = +dNum;
     num1 = operate(num1, num2, operator1);
     dNum = '' + num1;
-    //num2 = null;
 }
 
 function clearInput() {
