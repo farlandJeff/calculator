@@ -3,7 +3,6 @@ let num1 = null;
 let num2 = null;
 let operator1 = null;
 let operator2 = null;
-let result = null
 const numBtns = document.querySelectorAll('button');
 
 function displayNumber() {
@@ -27,6 +26,10 @@ numBtns.forEach(btn => {
             equalInput();
             displayNumber();
             //dNum = '0';
+        }
+        if (btn.classList.contains('clear')) {
+            clearInput();
+            displayNumber();
         }
     });
 });
@@ -68,7 +71,13 @@ function equalInput() {
     dNum = '' + num1;
 }
 
-
+function clearInput() {
+    dNum = '0';
+    num1 = null;
+    num2 = null;
+    operator1 = null;
+    operator2 = null;
+}
 
 function add(a, b) {
     return a + b;
