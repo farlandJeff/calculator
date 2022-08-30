@@ -3,6 +3,7 @@ let num1 = null;
 let num2 = null;
 let operator1 = null;
 let operator2 = null;
+let tempBtn = null;
 const numBtns = document.querySelectorAll('button');
 
 function displayNumber() {
@@ -17,10 +18,16 @@ numBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         if (btn.classList.contains('num')) {
             numInput(btn.value);
+            if (tempBtn != null) {
+                tempBtn.classList.remove('colorclick');
+                tempBtn = null;
+            }
             displayNumber();
         }
         if (btn.classList.contains('operator')) {
+            tempBtn = btn;
             opInput(btn.textContent);
+            tempBtn.classList.add('colorclick');
         }
         if (btn.classList.contains('equals')) {
             equalInput();
@@ -72,6 +79,9 @@ function opInput(op) {
         operator1 = operator2;
         operator2 = null;
         num2 = null;
+        console.log(num1);
+        num1 = parseFloat(num1.toFixed(10));
+        console.log(num1);
         dNum = num1;
         displayNumber();
         dNum = '0';
@@ -81,6 +91,7 @@ function opInput(op) {
 function equalInput() {
     if (num2 == null) num2 = +dNum;
     num1 = operate(num1, num2, operator1);
+    num1 = parseFloat(num1.toFixed(10));
     dNum = '' + num1;
 }
 
@@ -110,6 +121,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b == 0) return 'noob';
     return a / b;
 }
 
