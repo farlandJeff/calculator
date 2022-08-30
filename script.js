@@ -25,7 +25,6 @@ numBtns.forEach(btn => {
         if (btn.classList.contains('equals')) {
             equalInput();
             displayNumber();
-            //dNum = '0';
         }
         if (btn.classList.contains('clear')) {
             clearInput();
@@ -33,6 +32,16 @@ numBtns.forEach(btn => {
         }
         if (btn.classList.contains('percent')) {
             dNum = percentInput(dNum);
+            displayNumber();
+        }
+        if (btn.classList.contains('sign')) {
+            dNum = -dNum;
+            displayNumber();
+        }
+        if (btn.classList.contains('decimal')) {
+            if (!dNum.includes('.')) {
+                dNum = dNum + '.';
+            }
             displayNumber();
         }
     });
@@ -58,7 +67,7 @@ function opInput(op) {
         dNum = '0';
     } else if (operator1 != null) {
         operator2 = op;
-        num2 = +dNum;
+        if (num2 == null) num2 = +dNum;
         num1 = operate(num1, num2, operator1);
         operator1 = operator2;
         operator2 = null;
@@ -70,9 +79,10 @@ function opInput(op) {
 }
 
 function equalInput() {
-    if (num2 == null) num2 = parseInt(dNum);
+    if (num2 == null) num2 = +dNum;
     num1 = operate(num1, num2, operator1);
     dNum = '' + num1;
+    //num2 = null;
 }
 
 function clearInput() {
