@@ -31,6 +31,10 @@ numBtns.forEach(btn => {
             clearInput();
             displayNumber();
         }
+        if (btn.classList.contains('percent')) {
+            dNum = percentInput(dNum);
+            displayNumber();
+        }
     });
 });
 
@@ -79,7 +83,12 @@ function clearInput() {
     operator2 = null;
 }
 
+function percentInput(a) {
+    return a / 100;
+}
+
 function add(a, b) {
+    displayNumber();
     return a + b;
 }
 
@@ -95,15 +104,10 @@ function divide(a, b) {
     return a / b;
 }
 
-function percent(a) {
-    return a / 100;
-}
-
 function operate(a, b, op) {
     if (op == '+') return add(a, b);
     if (op == '-') return subtract(a, b);
     if (op == '*') return multiply(a, b);
-    if (op == '/') return divide(a, b);
-    if (op == '%') return percent(a);
+    if (op == '/') return divide(a, b);    
 }
 
