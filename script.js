@@ -11,9 +11,10 @@ function displayNumber() {
     display.textContent = '' + dNum;
 }
 
+// Inital number display (0)
 displayNumber();
 
-
+// Each button, depending on class, invokes a different function.
 numBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         if (btn.classList.contains('num')) {
@@ -55,7 +56,7 @@ numBtns.forEach(btn => {
 });
 
 function numInput(num) {
-    if (num1 != null && num2 != null) {
+    if (num1 != null && num2 != null) { // Resets if neither are null
         num1 = null;
         num2 = null;
         dNum = '0'
@@ -67,21 +68,20 @@ function numInput(num) {
     }
 }
 
+// Operation Inputs
 function opInput(op) {
     if (operator1 == null) {
         operator1 = op;
         num1 = +dNum;
         dNum = '0';
-    } else if (operator1 != null) {
-        operator2 = op;
+    } else if (operator1 != null) { // For multiple operations w/o equals
+        operator2 = op; // Only used when the '=' isn't used
         if (num2 == null) num2 = +dNum;
         num1 = operate(num1, num2, operator1);
         operator1 = operator2;
         operator2 = null;
         num2 = null;
-        console.log(num1);
         num1 = parseFloat(num1.toFixed(10));
-        console.log(num1);
         dNum = num1;
         displayNumber();
         dNum = '0';
@@ -95,6 +95,7 @@ function equalInput() {
     dNum = '' + num1;
 }
 
+// Clears the entire app's data. 
 function clearInput() {
     dNum = '0';
     num1 = null;
