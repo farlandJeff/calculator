@@ -50,6 +50,12 @@ numBtns.forEach(btn => {
             if (!dNum.includes('.')) {
                 dNum = dNum + '.';
             }
+            if (num1 != null && num2 != null) {
+                num1 = null;
+                num2 = null;
+                dNum = '0';
+                dNum = dNum + '.';
+            }
             displayNumber();
         }
     });
@@ -70,28 +76,53 @@ function numInput(num) {
 
 // Operation Inputs
 function opInput(op) {
+    
     if (operator1 == null) {
         operator1 = op;
         num1 = +dNum;
         dNum = '0';
-    } else if (operator1 != null) { // For multiple operations w/o equals
+    } else if (operator1 != null && num2 == null) { // For multiple operations w/o equals
         operator2 = op; // Only used when the '=' isn't used
-        if (num2 == null) num2 = +dNum;
+        console.log('num1 = ' + num1);
+        console.log('num2 = ' + num2);
+        console.log(operator1);
+        console.log(operator2);
+        num2 = +dNum;
         num1 = operate(num1, num2, operator1);
+        console.log('num1 = ' + num1);
+        console.log('num2 = ' + num2);
+        console.log(operator1);
+        console.log(operator2);
         operator1 = operator2;
         operator2 = null;
         num2 = null;
-        num1 = parseFloat(num1.toFixed(10));
+        //num1 = parseFloat(num1.toFixed(10));
         dNum = num1;
         displayNumber();
         dNum = '0';
+    } else {
+        console.log('num1 = ' + num1);
+        console.log('num2 = ' + num2);
+        console.log(operator1);
+        console.log(operator2);
+        operator1 = op;
+        num2 = null;
+        dNum = '0';
+        console.log('num1 = ' + num1);
+        console.log('num2 = ' + num2);
+        console.log(operator1);
+        console.log(operator2);
     }
 }
 
 function equalInput() {
     if (num2 == null) num2 = +dNum;
     num1 = operate(num1, num2, operator1);
-    num1 = parseFloat(num1.toFixed(10));
+    console.log('num1 = ' + num1);
+    console.log('num2 = ' + num2);
+    console.log(operator1);
+    console.log(operator2);
+    //num1 = parseFloat(num1.toFixed(10));
     dNum = '' + num1;
 }
 
